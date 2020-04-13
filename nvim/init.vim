@@ -46,6 +46,10 @@ au BufRead,BufNewFile *.c set expandtab
 au BufRead,BufNewFile *.h set expandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
+" Code auto-formatting
+autocmd FileType cpp nnoremap <F6> :ClangFormat<CR>
+autocmd FileType python nnoremap <F6> :Black<CR>
+
 " --------------------------------------------------------------------------------
 " configure editor with tabs and nice stuff...
 " --------------------------------------------------------------------------------
