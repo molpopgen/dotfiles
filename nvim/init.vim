@@ -19,6 +19,8 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'psf/black'
 Plug 'rust-lang/rust.vim'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'dense-analysis/ale'
 " Plug 'GCBallesteros/vim-autocite'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
