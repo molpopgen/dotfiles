@@ -13,6 +13,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'psf/black'
 Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
+Plug 'rhysd/vim-clang-format'
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'GCBallesteros/vim-autocite'
 " Plug 'xolox/vim-misc'
