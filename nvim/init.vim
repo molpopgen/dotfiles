@@ -3,6 +3,7 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'lervag/vimtex'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'altercation/vim-colors-solarized'
+Plug 'cocopon/iceberg.vim/'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
@@ -41,6 +42,7 @@ set tabstop=4           " use 4 spaces to represent tab
 set softtabstop=4
 set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent          " copy indent from current line when starting a new line
+
 
 " -| Terminal settings |-
 " Allow for escape to go to normal mode in terminal
@@ -98,8 +100,10 @@ set ruler               " show line and column number
 syntax on   			" syntax highlighting
 set showcmd 			" show (partial) command in status line
 let g:solarized_termcolors=256
+set termguicolors
 set background=dark
-colorscheme solarized
+let g:lightline = { 'colorscheme': 'iceberg' }
+colorscheme iceberg
 
 "" vimwiki uses markdown
 let g:vimwiki_list = [{'path': '~/vimwiki/',
