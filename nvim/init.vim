@@ -1,5 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ycm-core/YouCompleteMe'
+"
+" The relevant tools to install manually are:
+" coc-clangd
+" coc-rust-analyzer
+" coc-pyright
+" All are done via :CocInstall foo
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'altercation/vim-colors-solarized'
@@ -16,7 +22,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
 Plug 'rhysd/vim-clang-format'
 Plug 'rykka/riv.vim'
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'GCBallesteros/vim-autocite'
 " Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
@@ -78,20 +83,20 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_class_member_highlight = 1
 
-" YCM
-" let g:ycm_python_binary_path = 'python3'
-
-" The first line only exables ALE features that I ask for
+" The first line only enables ALE features that I ask for
 let g:ale_linters_explicit = 1
 let g:ale_linters = {'python': ['flake8', 'mypy'],
-            \        'tex': ['lacheck', 'chktex']}
+            \        'tex': ['lacheck', 'chktex'],
+            \        'rust': ['rust-analyzer']}
 let g:ale_fixers = {'python': ['black', 'isort'],
-            \       'tex': ['latexindent']}
+            \       'tex': ['latexindent'],
+            \       'rust': ['rustfmt']}
 
 "
 " Code auto-formatting
 autocmd FileType cpp nnoremap <F6> :ClangFormat<CR>
 autocmd FileType python nnoremap <F6> :ALEFix<CR>
+autocmd FileType rust nnoremap <F6> :ALEFix<CR>
 
 " make backspaces more powerfull
 set backspace=indent,eol,start
@@ -99,7 +104,7 @@ set backspace=indent,eol,start
 set ruler               " show line and column number
 syntax on   			" syntax highlighting
 set showcmd 			" show (partial) command in status line
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 set termguicolors
 set background=dark
 let g:lightline = { 'colorscheme': 'iceberg' }
