@@ -113,3 +113,6 @@ colorscheme iceberg
 "" vimwiki uses markdown
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+" Prevent vimwiki from mucking about with md 
+" files not in your wiki
+let g:vimwiki_global_ext = 0
