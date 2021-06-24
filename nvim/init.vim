@@ -116,3 +116,14 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 " Prevent vimwiki from mucking about with md 
 " files not in your wiki
 let g:vimwiki_global_ext = 0
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
