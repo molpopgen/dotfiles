@@ -67,13 +67,19 @@ tnoremap <M-f> <Esc>f
 " clang-rename
 au FileType c,cpp nmap <buffer><silent>,lr <Plug>(clang_rename-current)
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 " -| latex |-
 let $GDK_SCALE=1
 let g:tex_flavor='latex'
-let g:vimtex_fold_envs = 0
+let g:vimtex_fold_types = {}
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_latexmk_progname = 'nvr'
+let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
 let g:vimtex_view_general_options_latexmk = '--unique'
