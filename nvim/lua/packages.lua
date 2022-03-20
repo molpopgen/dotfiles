@@ -23,4 +23,8 @@ require('packer').startup(function()
     use 'dense-analysis/ale'
     use 'rhysd/vim-clang-format'
     use 'rykka/riv.vim'
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
 end)
