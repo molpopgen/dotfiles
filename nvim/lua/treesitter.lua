@@ -1,6 +1,6 @@
 local configs = require'nvim-treesitter.configs'
 configs.setup {
-  ensure_installed = "maintained", -- make sure we only use maintained parsers
+  ensure_installed = {"python", "rust", "c", "cpp", "latex", "r", "javascript"}, -- make sure we only use maintained parsers
   highlight = {
     enable = true,
     custom_captures = {
