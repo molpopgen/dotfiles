@@ -19,4 +19,8 @@ vim.cmd [[
     set showcmd 			" show (partial) command in status line
     " let g:lightline = { 'colorscheme': 'nord' }
     set completeopt=menu,menuone,noselect " for cmp
+    let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+    " prevent vimwiki messing with md files not in your wiki
+    let g:vimwiki_global_ext = 0
 ]]
