@@ -35,7 +35,8 @@ require('packer').startup(function()
     use 'simrat39/rust-tools.nvim'
     use 'williamboman/nvim-lsp-installer'
     -- use 'cocopon/iceberg.vim'
-    use 'shaunsingh/nord.nvim'
+    -- use 'shaunsingh/nord.nvim'
+    use "savq/melange"
     use 'tpope/vim-fugitive'
     use 'itchyny/lightline.vim'
     use 'psf/black'

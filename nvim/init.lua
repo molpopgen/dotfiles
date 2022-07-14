@@ -6,6 +6,7 @@ vim.cmd [[
     set tgc
     " colorscheme iceberg
     " colorscheme nord
+    colorscheme melange
     set background=dark
     set expandtab           " enter spaces when tab is pressed
     set textwidth=120       " break lines when line length increases
