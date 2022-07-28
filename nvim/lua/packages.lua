@@ -38,7 +38,7 @@ require('packer').startup(function()
     -- use 'shaunsingh/nord.nvim'
     use "savq/melange"
     use 'tpope/vim-fugitive'
-    use 'itchyny/lightline.vim'
+    -- use 'itchyny/lightline.vim'
     use 'psf/black'
     use 'vim-pandoc/vim-pandoc'
     use 'vim-pandoc/vim-pandoc-syntax'
@@ -74,5 +74,9 @@ require('packer').startup(function()
                 }
             }
         end
+    }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 end)

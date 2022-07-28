@@ -144,3 +144,5 @@ cmp.setup {
         { name = 'luasnip' },
     },
 }
+
+require('lualine').setup()
