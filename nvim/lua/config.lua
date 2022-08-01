@@ -13,6 +13,20 @@ require('ide')
 
 -- vim.g.lightline = { colorscheme = 'melange' }
 
+require("nvim-lsp-installer").setup {}
+local lspconfig = require('lspconfig')
+lspconfig.rust_analyzer.setup{
+  on_attach = on_attach,
+}
+local rust_tools = require("rust-tools")
+rust_tools.setup {
+    server = { on_attach = on_attach }
+}
+lspconfig.pylsp.setup{
+  on_attach = on_attach,
+}
+
+
 local opts = {
     tools = { -- rust-tools options
         autoSetHints = true,
@@ -83,8 +97,6 @@ local opts = {
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
