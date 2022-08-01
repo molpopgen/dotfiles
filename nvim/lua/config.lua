@@ -145,4 +145,5 @@ cmp.setup {
     },
 }
 
+require 'nvim-web-devicons'.setup { default = true; }
 require('lualine').setup()
