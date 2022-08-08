@@ -25,6 +25,7 @@ rust_tools.setup {
 lspconfig.pylsp.setup{
   on_attach = on_attach,
 }
+lspconfig.clangd.setup{}
 
 
 local opts = {
