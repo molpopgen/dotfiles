@@ -1,6 +1,6 @@
 require('packages')
-require('keybindings')    
 require('config')
+require('keybindings')    
 
 vim.cmd [[
     set tgc
@@ -15,6 +15,7 @@ vim.cmd [[
     set shiftwidth=4        " number of spaces to use for auto indent
     set autoindent          " copy indent from current line when starting a new line
     set number
+    set relativenumber
     set ruler               " show line and column number
     " syntax on   			" syntax highlighting
     set showcmd 			" show (partial) command in status line

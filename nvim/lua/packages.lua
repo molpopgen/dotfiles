@@ -23,6 +23,7 @@ require('packer').startup(function()
             }
         end
     }
+    use {'nvim-treesitter/nvim-treesitter-context'}
     use 'neovim/nvim-lspconfig'
     -- use 'hrsh7th/cmp-buffer'
     -- use 'hrsh7th/cmp-path'
@@ -33,7 +34,8 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'averms/black-nvim'
     use 'simrat39/rust-tools.nvim'
-    use 'williamboman/nvim-lsp-installer'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
     -- use 'cocopon/iceberg.vim'
     -- use 'shaunsingh/nord.nvim'
     use "savq/melange"
@@ -77,6 +79,9 @@ require('packer').startup(function()
     }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons', opt = false }
+    }
+    use {
+        "ray-x/lsp_signature.nvim",
     }
 end)

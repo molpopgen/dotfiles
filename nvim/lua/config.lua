@@ -8,25 +8,18 @@ require('ide')
 -- vim.g.nord_disable_background = false
 -- vim.g.nord_italic = true
 
--- Load the colorscheme
--- require('nord').set()
-
--- vim.g.lightline = { colorscheme = 'melange' }
-
-require("nvim-lsp-installer").setup {}
-local lspconfig = require('lspconfig')
-lspconfig.rust_analyzer.setup{
-  on_attach = on_attach,
-}
+require("mason").setup {}
+require('mason-lspconfig').setup({
+	ensure_installed = {"rust_analyzer", "pylsp", "clangd", "r-language-server"}
+})
+require('lspconfig').clangd.setup{}
+require('lspconfig').pylsp.setup{}
+require('lspconfig').rust_analyzer.setup{}
 local rust_tools = require("rust-tools")
 rust_tools.setup {
     server = { on_attach = on_attach }
 }
-lspconfig.pylsp.setup{
-  on_attach = on_attach,
-}
-lspconfig.clangd.setup{}
-
+require "lsp_signature".setup({})
 
 local opts = {
     tools = { -- rust-tools options
@@ -153,6 +146,7 @@ cmp.setup {
         end,
     },
     sources = {
+        { name = 'nvim_lsp_signature_help' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
     },
