@@ -23,7 +23,11 @@ set $menu dmenu_path | fuzzel | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Placement of windows determined using wdisplays (dnf install wdislpays)
 output * bg /usr/share/backgrounds/default.png fill
+output HDMI-A-2 pos 2560 120
+output HDMI-A-1 pos 4000 510
+output HDMI-A-2 transform 90 
 #
 # Example configuration:
 #
@@ -213,9 +217,15 @@ bar {
 
     colors {
         statusline #ffffff
-        background #323232
+        background #2a2520
         inactive_workspace #32323200 #32323200 #5c5c5c
+        focused_workspace #32323200 #444444 #ffffff
     }
 }
+
+# Various colors
+client.focused #2a2520 #544b44 #ffffff
+client.focused_inactive #2a2520 #444444 #ffffff
+client.unfocused #2a2520 #352f2a #ffffff
 
 include /etc/sway/config.d/*
