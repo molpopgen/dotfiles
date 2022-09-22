@@ -53,30 +53,30 @@ require('packer').startup(function()
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'vimwiki/vimwiki'
-    use {
-        "nvim-neorg/neorg",
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require('neorg').setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.gtd.base"] = {
-                        config = {
-                            workspace = "work"
-                        }
-                    },
-                    ["core.norg.dirman"] = {
-                        config = {
-                            workspaces = {
-                                work = "~/notes/work",
-                                home = "~/notes/home",
-                            }
-                        }
-                    }
-                }
-            }
-        end
-    }
+    -- use {
+    --     "nvim-neorg/neorg",
+    --     requires = "nvim-lua/plenary.nvim",
+    --     config = function()
+    --         require('neorg').setup {
+    --             load = {
+    --                 ["core.defaults"] = {},
+    --                 ["core.gtd.base"] = {
+    --                     config = {
+    --                         workspace = "work"
+    --                     }
+    --                 },
+    --                 ["core.norg.dirman"] = {
+    --                     config = {
+    --                         workspaces = {
+    --                             work = "~/notes/work",
+    --                             home = "~/notes/home",
+    --                         }
+    --                     }
+    --                 }
+    --             }
+    --         }
+    --     end
+    -- }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = false }
