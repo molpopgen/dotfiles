@@ -10,11 +10,12 @@ require('ide')
 
 require("mason").setup {}
 require('mason-lspconfig').setup({
-	ensure_installed = {"rust_analyzer", "pylsp", "clangd", "r-language-server"}
+	ensure_installed = {"rust-analyzer", "python-lsp-server", "clangd", "r-languageserver"}
 })
 require('lspconfig').clangd.setup{}
 require('lspconfig').pylsp.setup{}
 require('lspconfig').rust_analyzer.setup{}
+require('lspconfig').r_language_server.setup{}
 local rust_tools = require("rust-tools")
 rust_tools.setup {
     server = { on_attach = on_attach }
