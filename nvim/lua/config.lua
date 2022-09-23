@@ -10,10 +10,29 @@ require('ide')
 
 require("mason").setup {}
 require('mason-lspconfig').setup({
-	ensure_installed = {"rust-analyzer", "python-lsp-server", "clangd", "r-languageserver"}
+    ensure_installed = {"rust-analyzer", "python-lsp-server", "clangd", "r-languageserver"}
 })
 require('lspconfig').clangd.setup{}
-require('lspconfig').pylsp.setup{}
+
+-- For this all to work:
+-- pip install python-lsp-black
+-- after intalling the Lsp and
+-- then activating its venv.
+-- To find the lsp location:
+-- ps ax | grep lsp while nvim is running.
+require('lspconfig').pylsp.setup{
+    filetypes = {"python"},
+    settings = {
+        configurationSources = {"flake8"},
+        formatCommand = {"black"},
+        pylsp = {
+            plugins = {
+                black = { enabled = true },
+                isort = { enabled = true },
+            }
+        }
+    },
+}
 require('lspconfig').rust_analyzer.setup{}
 require('lspconfig').r_language_server.setup{}
 local rust_tools = require("rust-tools")

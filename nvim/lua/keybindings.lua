@@ -31,6 +31,6 @@ nkeymap('<F6>', ':lua vim.lsp.buf.formatting()<CR>')
 
 -- .. so we kick it old-school, which works
 -- with pyright + pyslp both installed
-vim.cmd [[
-    autocmd FileType python nnoremap <F6> :Black<CR>
-]]
+-- vim.cmd [[
+--     autocmd FileType python nnoremap <F6> :Black<CR>
+-- ]]
