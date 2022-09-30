@@ -32,7 +32,7 @@ require('packer').startup(function()
     use 'hrsh7th/cmp-nvim-lsp'
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
-    use 'averms/black-nvim'
+    -- use 'averms/black-nvim'
     use 'simrat39/rust-tools.nvim'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
@@ -41,7 +41,7 @@ require('packer').startup(function()
     use "savq/melange"
     use 'tpope/vim-fugitive'
     -- use 'itchyny/lightline.vim'
-    use 'psf/black'
+    -- use 'psf/black'
     use 'vim-pandoc/vim-pandoc'
     use 'vim-pandoc/vim-pandoc-syntax'
     use 'vim-pandoc/vim-rmarkdown'
