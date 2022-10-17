@@ -25,23 +25,15 @@ require('packer').startup(function()
     }
     use {'nvim-treesitter/nvim-treesitter-context'}
     use 'neovim/nvim-lspconfig'
-    -- use 'hrsh7th/cmp-buffer'
-    -- use 'hrsh7th/cmp-path'
-    -- use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
-    -- use 'averms/black-nvim'
     use 'simrat39/rust-tools.nvim'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
-    -- use 'cocopon/iceberg.vim'
-    -- use 'shaunsingh/nord.nvim'
     use "savq/melange"
     use 'tpope/vim-fugitive'
-    -- use 'itchyny/lightline.vim'
-    -- use 'psf/black'
     use 'vim-pandoc/vim-pandoc'
     use 'vim-pandoc/vim-pandoc-syntax'
     use 'vim-pandoc/vim-rmarkdown'
@@ -53,30 +45,6 @@ require('packer').startup(function()
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'vimwiki/vimwiki'
-    -- use {
-    --     "nvim-neorg/neorg",
-    --     requires = "nvim-lua/plenary.nvim",
-    --     config = function()
-    --         require('neorg').setup {
-    --             load = {
-    --                 ["core.defaults"] = {},
-    --                 ["core.gtd.base"] = {
-    --                     config = {
-    --                         workspace = "work"
-    --                     }
-    --                 },
-    --                 ["core.norg.dirman"] = {
-    --                     config = {
-    --                         workspaces = {
-    --                             work = "~/notes/work",
-    --                             home = "~/notes/home",
-    --                         }
-    --                     }
-    --                 }
-    --             }
-    --         }
-    --     end
-    -- }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = false }

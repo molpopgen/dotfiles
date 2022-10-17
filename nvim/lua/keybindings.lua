@@ -27,7 +27,7 @@ nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
 -- the plain formatting works poorly w/the python LSPs...
-nkeymap('<F6>', ':lua vim.lsp.buf.formatting()<CR>')
+nkeymap('<F6>', ':lua vim.lsp.buf.format{async = true}<CR>')
 
 -- .. so we kick it old-school, which works
 -- with pyright + pyslp both installed

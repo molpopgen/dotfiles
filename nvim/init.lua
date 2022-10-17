@@ -1,5 +1,5 @@
 require('packages')
-require('config')
+require('ide_config')
 require('keybindings')    
 
 vim.cmd [[
