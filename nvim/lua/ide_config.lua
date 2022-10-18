@@ -1,6 +1,7 @@
 require("mason").setup {}
 require('mason-lspconfig').setup({
-    ensure_installed = {"rust-analyzer", "python-lsp-server", "clangd", "r-languageserver"}
+    ensure_installed = { "rust_analyzer",
+        "sumneko_lua", "pylsp", "clangd", "r_language_server" }
 })
 
 require "lsp_signature".setup({})
@@ -13,3 +14,6 @@ require('r_lsp')
 require('rust_lsp')
 require('nvim_cmp')
 
+-- some lazy stuff goes here that we don't think
+-- we'll need to config more later
+require('lspconfig').sumneko_lua.setup {}
