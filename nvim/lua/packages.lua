@@ -23,7 +23,7 @@ require('packer').startup(function()
             }
         end
     }
-    use {'nvim-treesitter/nvim-treesitter-context'}
+    use { 'nvim-treesitter/nvim-treesitter-context' }
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -33,6 +33,13 @@ require('packer').startup(function()
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use "savq/melange"
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "rebelot/kanagawa.nvim" }
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+    })
+
     use 'tpope/vim-fugitive'
     use 'vim-pandoc/vim-pandoc'
     use 'vim-pandoc/vim-pandoc-syntax'
@@ -53,3 +60,8 @@ require('packer').startup(function()
         "ray-x/lsp_signature.nvim",
     }
 end)
+
+require('rose-pine').setup({
+	--- @usage 'main' | 'moon'
+	dark_variant = 'moon',
+})
