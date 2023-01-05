@@ -45,19 +45,43 @@ lsp.setup_nvim_cmp({
 -- then activating its venv.
 -- To find the lsp location:
 -- ps ax | grep lsp while nvim is running.
-require('lspconfig').pylsp.setup {
-    filetypes = { "python" },
-    settings = {
-        configurationSources = { "flake8" },
-        formatCommand = { "black" },
-        pylsp = {
-            plugins = {
-                black = { enabled = true },
-                isort = { enabled = true },
-            }
-        }
-    },
-}
+-- require('lspconfig').pylsp.setup {
+--     filetypes = { "python" },
+--     settings = {
+--         configurationSources = { "flake8" },
+--         formatCommand = { "black" },
+--         pylsp = {
+--             plugins = {
+--                 black = { enabled = true },
+--                 isort = { enabled = true },
+--             }
+--         }
+--     },
+-- }
+
+
+-- NOTE: this breaks the F6 key binding below
+--       see the README: we are doing things
+--       in the wrong order, methinks.
+-- from lsp_zero README
+-- local rust_lsp = lsp.build_options('rust_analyzer', {})
+-- require('rust-tools').setup({
+--     server = { rust_lsp,
+--         -- settings = {
+--         --     -- to enable rust-analyzer settings visit:
+--         --     -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+--         --     ["rust-analyzer"] = {
+--         --         -- enable clippy on save
+--         --         checkOnSave = {
+--         --             command = "clippy"
+--         --         },
+--         --         cargo = {
+--         --             features = "all"
+--         --         },
+--         --     }
+--         -- }
+--     },
+-- })
 
 vim.diagnostic.config({
     -- virtual_text is the floaty words on the side,
@@ -70,13 +94,26 @@ vim.diagnostic.config({
     float = true,
 })
 
+lsp.configure('rust_analyzer', {
+    settings = {
+        ["rust-analyzer"] = {
+            checkOnSave = {
+                command = "clippy"
+            },
+            cargo = {
+                features = "all"
+            },
+        }
+    }
+})
+
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set("n", 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", 'gw', vim.lsp.buf.document_symbol, opts)
+    -- vim.keymap.set("n", 'gw', vim.lsp.buf.document_symbol, opts)
     vim.keymap.set("n", 'gw', vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set("n", 'gt', vim.lsp.buf.type_definition, opts)
