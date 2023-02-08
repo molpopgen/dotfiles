@@ -4,6 +4,14 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# Start gnome keyring.
+# This must be coordinated with ~/.zprofile,
+# which must export SSH_AUTH_SOCK appropriately.
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
+
+gaps inner 5
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,7 +22,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term kitty -d $HOME
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -24,7 +32,9 @@ set $menu dmenu_path | fuzzel | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Placement of windows determined using wdisplays (dnf install wdislpays)
-output * bg /usr/share/backgrounds/default.png fill
+output * bg ~/Pictures/backgrounds/bishop_oct_22.jpg fill
+
+# Relative monitor configs for campus office machine
 output HDMI-A-2 pos 2560 120
 output HDMI-A-1 pos 4000 510
 output HDMI-A-2 transform 90 
@@ -216,16 +226,17 @@ bar {
     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #2a2520
-        inactive_workspace #32323200 #32323200 #5c5c5c
-        focused_workspace #32323200 #444444 #ffffff
+        statusline #c4a7e7
+        background #232136
+# border/background/text
+        inactive_workspace #44415a #44415a #e0def4
+        focused_workspace #56526e #56526e #e0def4
     }
 }
 
-# Various colors
-client.focused #2a2520 #544b44 #ffffff
-client.focused_inactive #2a2520 #444444 #ffffff
-client.unfocused #2a2520 #352f2a #ffffff
+# Various colors -- border/background/text
+client.focused #56526e #56526e #e0def4
+client.focused_inactive #44415a #44415a #e0def4
+client.unfocused #2a283e #2a283e #e0def4
 
 include /etc/sway/config.d/*
