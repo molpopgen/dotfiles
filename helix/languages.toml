@@ -8,8 +8,6 @@ auto-format = true
 comment-token = "//"
 language-server = { command = "rust-analyzer" }
 indent = { tab-width = 4, unit = "    " }
-
-[language.config]
 config.cargo.features = "all"
 
 [[language]]

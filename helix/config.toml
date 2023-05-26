@@ -2,4 +2,9 @@ theme = "rose_pine"
 
 [editor]
 line-number = "relative"
+scrolloff = 10
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
 
