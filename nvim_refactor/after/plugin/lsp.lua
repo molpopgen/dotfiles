@@ -31,13 +31,14 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
+    'lua_ls',
     'pylsp',
     'rust_analyzer',
     'clangd',
     'r_language_server'
 })
 
-lsp.skip_server_setup({ 'rust_analyzer' })
+-- lsp.skip_server_setup({ 'rust_analyzer' })
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -55,6 +56,22 @@ cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings
+})
+
+lsp.configure('rust_analyzer', {
+    settings = {
+        -- to enable rust-analyzer settings visit:
+        -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+        ["rust-analyzer"] = {
+            -- enable clippy on save
+            checkOnSave = {
+                command = "clippy"
+            },
+            cargo = {
+                features = "all"
+            },
+        }
+    }
 })
 
 -- For this all to work:
@@ -95,28 +112,28 @@ vim.diagnostic.config({
     float = true,
 })
 
-require('rust-tools').setup({
-    server = {
-        on_attach = function(client, bufnr)
-            -- NOTE: this is hacky!
-            -- As per the lsp-zero README, we disable rust_analyzer config
-            -- above.
-            -- However, doing so means that we need to manually set our
-            -- keymappings for this tool
-            set_lsp_keymappings(client, bufnr)
-        end,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-                cargo = {
-                    features = "all"
-                },
-            }
-        }
-    },
-})
+-- require('rust-tools').setup({
+--     server = {
+--         on_attach = function(client, bufnr)
+--             -- NOTE: this is hacky!
+--             -- As per the lsp-zero README, we disable rust_analyzer config
+--             -- above.
+--             -- However, doing so means that we need to manually set our
+--             -- keymappings for this tool
+--             set_lsp_keymappings(client, bufnr)
+--         end,
+--         settings = {
+--             -- to enable rust-analyzer settings visit:
+--             -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+--             ["rust-analyzer"] = {
+--                 -- enable clippy on save
+--                 checkOnSave = {
+--                     command = "clippy"
+--                 },
+--                 cargo = {
+--                     features = "all"
+--                 },
+--             }
+--         }
+--     },
+-- })
