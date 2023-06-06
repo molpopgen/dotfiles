@@ -28,6 +28,10 @@ require('packer').startup(function(use)
     use('tpope/vim-fugitive')
 
     use {
+        "windwp/nvim-autopairs",
+    }
+
+    use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
@@ -58,5 +62,4 @@ require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = false }
     }
-
 end)
