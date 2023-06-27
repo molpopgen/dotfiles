@@ -2,7 +2,7 @@ vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
- 
+
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -32,3 +32,12 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+vim.diagnostic.config({
+    virtual_text     = false,
+    signs            = true,
+    update_in_insert = false,
+    underline        = true,
+    severity_sort    = true,
+    float            = true,
+})
