@@ -12,6 +12,14 @@
    * extract into ~/.fonts
    * `fc-cache -fv`
 
+## neovim
+
+To get black working for python:
+
+* Determine the venv of the LSP by editing a Python file and running `ps ax | grep lsp`
+* In a terminal, activate that venv and install [this](https://github.com/python-lsp/python-lsp-black).
+* Restart neovim.
+
 ### kitty
 
 Note: `kitty.conf` explicitly maps the dev icons to the nerd fonts symbols.
