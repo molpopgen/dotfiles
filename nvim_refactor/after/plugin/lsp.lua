@@ -27,7 +27,17 @@ require("lspconfig").lua_ls.setup {}
 require("lspconfig").rust_analyzer.setup {}
 require("lspconfig").r_language_server.setup {}
 require("lspconfig").clangd.setup {}
-require("lspconfig").pylsp.setup {}
+require("lspconfig").pylsp.setup({
+    on_attach = on_attach,
+    settings = {
+        pylsp = {
+            plugins = {
+                pyls_black = { enabled = true },
+                isort = { enabled = true, profile = "black" },
+            },
+        },
+    },
+})
 
 set_lsp_keymappings()
 
