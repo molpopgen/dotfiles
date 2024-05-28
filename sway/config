@@ -10,6 +10,10 @@
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
 
+font pango:FiraCode Medium 10
+
+default_border none
+
 gaps inner 5
 
 ### Variables
@@ -32,7 +36,7 @@ set $menu dmenu_path | fuzzel | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Placement of windows determined using wdisplays (dnf install wdislpays)
-output * bg ~/Pictures/backgrounds/bishop_oct_22.jpg fill
+output * bg ~/Pictures/20231221_0364_01.jpg fill
 
 # Relative monitor configs for campus office machine
 output HDMI-A-2 pos 2560 120
@@ -87,7 +91,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+slash exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -215,24 +219,40 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Volume control
+#
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+#
+# Monitor brightness
+#
+bindsym XF86MonBrightnessUp exec light -A 2
+bindsym XF86MonBrightnessDown exec light -U 2
+
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #c4a7e7
-        background #232136
-# border/background/text
-        inactive_workspace #44415a #44415a #e0def4
-        focused_workspace #56526e #56526e #e0def4
-    }
-}
+#bar {
+#    position top
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    #    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#    status_command i3blocks
+#
+#    colors {
+#        statusline #c4a7e7
+#        background #232136
+## border/background/text
+#        inactive_workspace #44415a #44415a #e0def4
+#        focused_workspace #56526e #56526e #e0def4
+#    }
+#}
+bar swaybar_command waybar
 
 # Various colors -- border/background/text
 client.focused #56526e #56526e #e0def4
