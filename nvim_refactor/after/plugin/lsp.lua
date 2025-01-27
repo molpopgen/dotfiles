@@ -38,6 +38,10 @@ require("lspconfig").pylsp.setup({
         },
     },
 })
+require'lspconfig'.tinymist.setup{
+	settings = {
+	}
+}
 
 set_lsp_keymappings()
 
