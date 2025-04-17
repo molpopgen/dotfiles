@@ -1,77 +1,73 @@
-vim.api.nvim_command('packadd packer.nvim')
+-- vim.api.nvim_command('packadd packer.nvim')
 
-require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+local function bootstrap_pckr()
+    local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    if not (vim.uv or vim.loop).fs_stat(pckr_path) then
+        vim.fn.system({
+            'git',
+            'clone',
+            "--filter=blob:none",
+            'https://github.com/lewis6991/pckr.nvim',
+            pckr_path
+        })
+    end
+
+    vim.opt.rtp:prepend(pckr_path)
+end
+
+bootstrap_pckr()
+
+local cmd = require('pckr.loader.cmd')
+local keys = require('pckr.loader.keys')
+
+require('pckr').add {
+    'tpope/vim-fugitive',
+
+    {
+        'nvim-telescope/telescope.nvim', -- tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    },
 
-    use({
+    {
         'rose-pine/neovim',
         as = 'rose-pine',
-    })
+    },
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    { 'nvim-treesitter/nvim-treesitter',            { run = ':TSUpdate' } },
     -- use('nvim-treesitter/playground')
-    use { 'nvim-treesitter/nvim-treesitter-context' }
-    use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+    { 'nvim-treesitter/nvim-treesitter-context' },
+    { 'nvim-treesitter/nvim-treesitter-textobjects' },
 
-    -- use('theprimeagen/harpoon')
-    -- use('mbbill/undotree')
-    use('tpope/vim-fugitive')
 
-    use {
+    {
         "windwp/nvim-autopairs",
-    }
+    },
 
     -- LSP Support
-    use { 'neovim/nvim-lspconfig' }
-    use { 'williamboman/mason.nvim' }
-    use { 'williamboman/mason-lspconfig.nvim' }
-    use { 'simrat39/rust-tools.nvim' }
+    { 'neovim/nvim-lspconfig' },
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'simrat39/rust-tools.nvim' },
     -- Autocompletion
-    use { 'hrsh7th/nvim-cmp' }
-    use { 'hrsh7th/cmp-buffer' }
-    use { 'hrsh7th/cmp-path' }
-    -- use { 'saadparwaiz1/cmp_luasnip' }
-    use { 'hrsh7th/cmp-nvim-lsp' }
-    use { 'hrsh7th/cmp-nvim-lua' }
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
 
     -- snippets
-    use { 'L3MON4D3/LuaSnip' }
+    { 'L3MON4D3/LuaSnip' },
 
-    -- use {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     requires = {
-    --         -- LSP Support
-    --         { 'neovim/nvim-lspconfig' },
-    --         { 'williamboman/mason.nvim' },
-    --         { 'williamboman/mason-lspconfig.nvim' },
+    -- pandoc
+    { 'vim-pandoc/vim-pandoc' },
+    { 'vim-pandoc/vim-pandoc-syntax' },
+    { 'vim-pandoc/vim-rmarkdown' },
 
-    --         -- specific language support
-
-    --         -- Autocompletion
-    --         { 'hrsh7th/nvim-cmp' },
-    --         { 'hrsh7th/cmp-buffer' },
-    --         { 'hrsh7th/cmp-path' },
-    --         { 'saadparwaiz1/cmp_luasnip' },
-    --         { 'hrsh7th/cmp-nvim-lsp' },
-    --         { 'hrsh7th/cmp-nvim-lua' },
-
-    --         -- Snippets
-    --         { 'L3MON4D3/LuaSnip' },
-    --         { 'rafamadriz/friendly-snippets' },
-    --     }
-    -- }
-    use { 'vim-pandoc/vim-pandoc' }
-    use { 'vim-pandoc/vim-pandoc-syntax' }
-    use { 'vim-pandoc/vim-rmarkdown' }
-    use {
+    -- lualine
+    {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = false }
-    }
-end)
+    },
+}
