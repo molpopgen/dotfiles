@@ -1,2 +1,2 @@
-require('krt.packer')
 require('krt.settings')
+require('krt.packer')
