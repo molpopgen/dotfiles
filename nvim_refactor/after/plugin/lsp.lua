@@ -20,7 +20,10 @@ end
 
 require("mason").setup()
 require("mason-lspconfig").setup(
-    { ensure_installed = { 'clangd', 'lua_ls', 'pylsp', 'r_language_server', 'rust_analyzer' ,'tinymist'} }
+    {
+        automatic_enable = false,
+        ensure_installed = { 'clangd', 'lua_ls', 'pylsp', 'r_language_server', 'rust_analyzer', 'tinymist' }
+    }
 )
 
 require("lspconfig").lua_ls.setup {}
@@ -38,9 +41,9 @@ require("lspconfig").pylsp.setup({
         },
     },
 })
-require'lspconfig'.tinymist.setup{
-	settings = {
-	}
+require 'lspconfig'.tinymist.setup {
+    settings = {
+    }
 }
 
 set_lsp_keymappings()
