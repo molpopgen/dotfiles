@@ -31,9 +31,11 @@ cmp.setup {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- The following example advertise capabilities to `clangd`.
-require 'lspconfig'.clangd.setup {
-    capabilities = capabilities,
-}
-require 'lspconfig'.rust_analyzer.setup {
-    capabilities = capabilities,
-}
+vim.lsp.config("rust_analyzer", { capabilities = capabilities })
+vim.lsp.config("clangd", { capabilities = capabilities })
+-- require 'lspconfig'.clangd.setup {
+--     capabilities = capabilities,
+-- }
+-- require 'lspconfig'.rust_analyzer.setup {
+--     capabilities = capabilities,
+-- }

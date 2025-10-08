@@ -26,12 +26,12 @@ require("mason-lspconfig").setup(
     }
 )
 
-require("lspconfig").lua_ls.setup {}
-require("lspconfig").rust_analyzer.setup {}
-require("lspconfig").r_language_server.setup {}
-require("lspconfig").clangd.setup {}
-require("lspconfig").pylsp.setup({
-    on_attach = on_attach,
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('r_language_server')
+vim.lsp.enable('clangd')
+vim.lsp.enable('tinymist')
+vim.lsp.config('pylsp', {
     settings = {
         pylsp = {
             plugins = {
@@ -39,12 +39,9 @@ require("lspconfig").pylsp.setup({
                 isort = { enabled = true, profile = "black" },
             },
         },
-    },
-})
-require 'lspconfig'.tinymist.setup {
-    settings = {
     }
-}
+})
+vim.lsp.enable('pylsp')
 
 set_lsp_keymappings()
 
@@ -57,9 +54,7 @@ rust_tools.setup {
             -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
             ["rust-analyzer"] = {
                 -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
+                checkOnSave = true,
                 cargo = {
                     features = "all"
                 },
