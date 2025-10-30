@@ -27,18 +27,18 @@ require("mason-lspconfig").setup(
 )
 
 vim.lsp.enable('lua_ls')
-vim.lsp.config('rust_analyzer',
-    {
-        settings = {
-            ["rust-analyzer"] = {
-                checkOnSave = true,
-                cargo = {
-                    features = { "all" }
-                },
-            },
-        }
-    }
-)
+-- vim.lsp.config('rust_analyzer',
+--     {
+--         settings = {
+--             ["rust-analyzer"] = {
+--                 checkOnSave = true,
+--                 cargo = {
+--                     features = { "all" }
+--                 },
+--             },
+--         }
+--     }
+-- )
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('r_language_server')
 vim.lsp.enable('clangd')
