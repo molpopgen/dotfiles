@@ -62,8 +62,8 @@ require('pckr').add {
     { 'L3MON4D3/LuaSnip' },
 
     -- pandoc
-    { 'vim-pandoc/vim-pandoc' },
-    { 'vim-pandoc/vim-pandoc-syntax' },
+    -- { 'vim-pandoc/vim-pandoc' },
+    -- { 'vim-pandoc/vim-pandoc-syntax' },
     { 'vim-pandoc/vim-rmarkdown' },
 
     -- lualine
