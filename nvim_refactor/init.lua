@@ -45,6 +45,7 @@ vim.pack.add({
 
 enable_lsps = function()
     vim.lsp.enable('pylsp')
+    vim.lsp.enable('clangd')
     -- NOPE: rust-analyzer behaves differently...
     -- vim.lsp.enable('rust-analyzer')
 end
