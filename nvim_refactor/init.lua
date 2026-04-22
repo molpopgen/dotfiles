@@ -11,7 +11,7 @@ vim.pack.add({
 
     {
         src = 'https://github.com/rose-pine/neovim',
-        as = 'rose-pine',
+        name = 'rose-pine',
     },
 
 
